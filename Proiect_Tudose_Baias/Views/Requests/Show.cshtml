@@ -1,0 +1,52 @@
+﻿@model Proiect_Tudose_Baias.Models.Request
+@{
+    ViewBag.Title = "Show";
+}
+
+
+<h1>Cerere pentru produsul:</h1>
+@*@{
+    if (Model.RequestImage != null)
+    {
+        <img src="@Url.Content(Model.RequestImage)" style="width:40%;" />
+    }
+}*@
+<h2>@Model.RequestTitle</h2>
+<h4>Descriere: @Model.RequestDescription</h4>
+<h5>Pret: @Model.RequestPrice</h5>
+<h5>In categoria: @Model.Category.CategoryName</h5>
+<h7>Adaugata de colaboratorul: @Model.Colab.UserName</h7>
+<hr />
+@if (Model.Status == Proiect_Tudose_Baias.Models.Status.Pending)
+{
+    <h4 style="color:darkgoldenrod">Cererea este in asteptare.</h4>
+    <a class="btn btn-default" href="/Requests/Edit/@Model.RequestId">Modifica aceasta cerere</a>
+    <hr />
+    <form method="post" action="/Requests/Delete/@Model.RequestId">
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <button type="submit">Sterge cerere</button>
+    </form>
+    <form method="get" action="/Requests/Accept/@Model.RequestId">
+
+        <button type="submit">Accepta cerere</button>
+    </form>
+    <form method="get" action="/Requests/Deny/@Model.RequestId">
+
+        <button type="submit">Respinge cerere</button>
+    </form>
+    <hr />
+}
+else if (Model.Status == Proiect_Tudose_Baias.Models.Status.Accepted)
+{
+    <h4 style="color:darkgreen">Cererea a fost acceptata.</h4>
+}
+else if (Model.Status == Proiect_Tudose_Baias.Models.Status.Rejected)
+{
+    <h4 style="color:darkred">Cererea a fost respinsa.</h4>
+}
+
+
+<a class="btn btn-primary" href="/Requests/Index">Inapoi la cereri</a>
+<br />
+@*<a href="/Requests/New">Adauga cerere</a>*@
+<br />

@@ -1,0 +1,22 @@
+﻿@using Proiect_Tudose_Baias.Models
+@model Proiect_Tudose_Baias.Models.ApplicationUser
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<h3>@ViewBag.Messagge</h3>
+
+@foreach (ApplicationUser user in ViewBag.Users)
+{
+    <h2>@user.UserName</h2>
+    <h3>@user.Roles.First().RoleId</h3>
+    <a href="/Account/Show/@user.Id">Afisare User</a>
+    <br />
+    <hr />
+    <br />
+}
+<a href="/Products/Index/">Afisare lista produse</a>
+<br />
+<a href="/Products/New">Adauga produs</a>
+<br />

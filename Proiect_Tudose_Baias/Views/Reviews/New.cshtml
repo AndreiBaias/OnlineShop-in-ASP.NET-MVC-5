@@ -1,0 +1,19 @@
+﻿@model Proiect_Tudose_Baias.Models.Review
+
+
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+
+<form method="post" action="/Reviews/New">
+    @Html.LabelFor(x => x.ReviewRating, "Rating review")
+    @Html.TextBoxFor(x => x.ReviewRating, null, new { @class = "form-control" })
+    @Html.LabelFor(x => x.ReviewText, "Comentariu review")
+    @Html.TextBoxFor(x => x.ReviewText, null, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.RequestId)
+    <br />
+
+    <button type="submit">Adauga review</button>
+</form>

@@ -1,0 +1,33 @@
+﻿@model Proiect_Tudose_Baias.Models.Order
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form method="post" action="/Orders/Edit/@Model.OrderId">
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    @Html.LabelFor(x => x.OrderAdress, "Adresa comanda")
+    <br />
+    @Html.EditorFor(x => x.OrderAdress)
+    <br /><br />
+
+    <button type="submit">Modifica aceasta comanda</button>
+</form>
+
+
+@*@{
+        ViewBag.Title = "Edit";
+    }
+
+    <h2>Edit</h2>
+
+    <form method="post" action="/Categories/Edit/@ViewBag.Category.CategoryId">
+        @Html.HttpMethodOverride(HttpVerbs.Put)
+        <label>Nume categorie</label>
+        <br />
+        <input type="text" name="CategoryName" value="@ViewBag.Category.CategoryName" />
+        <br /><br />
+
+        <button type="submit">Modifica aceasta categorie</button>
+    </form>*@

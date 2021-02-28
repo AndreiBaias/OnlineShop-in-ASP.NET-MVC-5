@@ -1,0 +1,48 @@
+﻿ @{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    .centru {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 64%;
+    }
+</style>
+<div class="centru">
+    <img src="https://i.imgur.com/uoPp8Kz.png" @*width="755" height="459"*@ />
+</div>
+<div class="jumbotron">
+    
+    <h1 style="font-family:Fantasy"> Emag de pe Aliexpress</h1>
+    <p style="font-family:Fantasy" >Lansare oficiala 2021</p>
+    @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+</div>
+
+<div class="row">
+    <div class="col-md-7">
+        <h2>Vezi produsele noastre</h2>
+        <p>
+            @*ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.*@
+        </p>
+        <p><a class="btn btn-default" href="/Products">Produse &raquo;</a></p>
+    </div>
+    <div class="col-md-7">
+        <h2>Vezi categorille noastre de produse</h2>
+        @*<p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>*@
+        <p><a class="btn btn-default" href="/Categories">Categorii Produse &raquo;</a></p>
+    </div>
+    @*<div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>*@
+    <div class="col-md-7">
+        <h2>Vezi cosul tau de cumparaturi</h2>
+        @*<p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>*@
+        <p><a class="btn btn-default" href="/Cart">Cos &raquo;</a></p>
+    </div>
+</div>

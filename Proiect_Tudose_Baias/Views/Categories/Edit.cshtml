@@ -1,0 +1,16 @@
+﻿@model Proiect_Tudose_Baias.Models.Category
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form method="post" action="/Categories/Edit/@Model.CategoryId">
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    @Html.LabelFor(x => x.CategoryName, "Nume categorie")
+    <br />
+    @Html.EditorFor(x => x.CategoryName)
+    <br /><br />
+
+    <button type="submit">Modifica aceasta categorie</button>
+</form>

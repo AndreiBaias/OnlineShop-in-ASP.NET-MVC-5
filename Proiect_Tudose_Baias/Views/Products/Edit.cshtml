@@ -1,0 +1,17 @@
+﻿@model Proiect_Tudose_Baias.Models.Product
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form method="post" action="/Products/Edit/@Model.RequestId">
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    @Html.LabelFor(x => x.ProductTitle, "Nume produs")
+    <br />
+    @Html.EditorFor(x => x.ProductTitle)
+    <br /><br />
+
+    <button type="submit">Modifica acest produs</button>
+</form>
+

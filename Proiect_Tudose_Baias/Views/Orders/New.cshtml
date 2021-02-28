@@ -1,0 +1,14 @@
+﻿@model Proiect_Tudose_Baias.Models.Order
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+
+<form method="post" action="/Orders/New">
+    <br />
+    <p></p>
+    <button type="submit" name="id" value="@Model.RequestId"> 
+            Adauga comanda
+    </button>
+</form>

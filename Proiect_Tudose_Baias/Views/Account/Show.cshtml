@@ -1,0 +1,20 @@
+﻿@using Proiect_Tudose_Baias.Models
+@model Proiect_Tudose_Baias.Models.ApplicationUser
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+<h1>Afisare user</h1>
+<h2>@Model.UserName</h2>
+<h3>@ViewBag.Role</h3>
+@*<form method="post" action="/Categories/Delete/@Model.CategoryId">
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button type="submit">Sterge categorie</button>
+</form>*@
+<a href="/Account/SwitchRole/@Model.Id">Schimba rolul</a>
+<hr />
+<a href="/Account/IndexBun">Inapoi la useri</a>
+
+<br />

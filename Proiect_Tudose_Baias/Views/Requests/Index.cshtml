@@ -1,0 +1,45 @@
+﻿@model Proiect_Tudose_Baias.Models.Request
+@{    
+    ViewBag.Title = "Index";
+}
+
+<h2>Cereri de adaugare</h2>
+<h3>@ViewBag.Messagge</h3>
+
+<div class="row">
+    @foreach (var request in ViewBag.Requests)
+    {
+    <div class="col-md-3">
+        <h2><a href="/Requests/Show/@request.RequestId">@request.RequestTitle</a></h2>
+
+        @{
+            if (request.Status == Proiect_Tudose_Baias.Models.Status.Pending)
+            {
+                <h3 style="background: darkgoldenrod; color: white">@request.Status</h3>
+            }
+            else if (request.Status == Proiect_Tudose_Baias.Models.Status.Accepted)
+            {
+                <h3 style="background:darkgreen; color: white">@request.Status</h3>
+            }
+            else if (request.Status == Proiect_Tudose_Baias.Models.Status.Rejected)
+            {
+                <h3 style="background:darkred; color:white">@request.Status</h3>
+            }
+        }
+
+        
+        <h4>@request.RequestDescription</h4>
+        <h4>@request.RequestPrice lei</h4>
+        @*<h6>@request.Category.CategoryName</h6>
+        <h7>@request.Colab.UserName</h7>*@
+
+        <br />
+        <hr />
+        <br />
+    </div>
+    }
+</div>
+<a href="/Requests/Index/">Afisare lista cereri</a>
+<br />
+<a href="/Requests/New">Adauga cerere</a>
+<br />

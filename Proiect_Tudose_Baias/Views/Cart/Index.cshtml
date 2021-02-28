@@ -1,0 +1,50 @@
+﻿@model Proiect_Tudose_Baias.Models.Cart
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cosul tau</h2>
+<div class="divider">
+    
+    <blockquote class="blockquote">
+        <p>Adresa de livrare</p>
+        <h3>@Model.CartAdress</h3>
+    </blockquote>
+    @{
+        int total = 0;
+        foreach (var order in Model.Orders)
+        {
+            <div class="well well-sm">
+                <h3>@order.Product.ProductTitle</h3>
+
+                <p class="pull-right">
+                    <button class="btn-danger"
+                            onclick="window.location.href='/Orders/Delete/@order.OrderId'">
+                        Elimina din cos
+                    </button>
+                    <br />
+                </p>
+                <h4 style="color:darkred">@order.Product.ProductPrice lei</h4>
+            </div>
+            total += @order.Product.ProductPrice;
+        }
+    }
+
+    <div class="well well-lg">
+        <h3>Valoare totala:</h3>
+        <button type="button" class="btn btn-success pull-right">
+            Comanda
+        </button>
+        <h2>@total lei</h2>
+
+    </div>
+</div>
+
+<hr />
+
+@*@foreach (var order in ViewBag.Cart)
+    {
+
+    <h4>@order.OrderAdress</h4>
+
+    }*@

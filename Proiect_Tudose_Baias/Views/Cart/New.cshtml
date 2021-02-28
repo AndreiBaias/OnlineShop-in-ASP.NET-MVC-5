@@ -1,0 +1,14 @@
+﻿@model Proiect_Tudose_Baias.Models.Cart
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+
+
+<form method="post" action="/Cart/New">
+    @Html.LabelFor(x => x.CartAdress, "Adresa comanda")
+    @Html.TextBoxFor(x => x.CartAdress, null, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CartAdress, null, new { @class = "text-danger" })
+    <button type="submit">Adauga adresa</button>
+</form>

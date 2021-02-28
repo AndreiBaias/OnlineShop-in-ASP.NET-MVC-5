@@ -1,0 +1,34 @@
+﻿@model Proiect_Tudose_Baias.Models.Request
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Adaugare cerere pentru un produs nou</h2>
+
+<form method="post" action="/Requests/New">
+    @Html.LabelFor(x => x.RequestTitle, "Nume produs")
+    @Html.TextBoxFor(x => x.RequestTitle, null, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.RequestTitle, null, new { @class = "text-danger" })
+    <br />
+    @Html.LabelFor(x => x.RequestDescription, "Descriere produs")
+    @Html.TextBoxFor(x => x.RequestDescription, null, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.RequestDescription, null, new { @class = "text-danger" })
+
+    @Html.LabelFor(x => x.RequestPrice, "Pret produs")
+    @Html.TextBoxFor(x => x.RequestPrice, null, new { @class = "form-control" })
+    <p></p>
+    @Html.LabelFor(x => x.CategoryId, "Nume categorie")
+    <select name="CategoryId">
+        @foreach (var category in ViewBag.Categories)
+        {
+            <option value="@category.CategoryId">
+                @category.CategoryName
+            </option>
+            @*@Html.DropDownListFor(m => m.Category, @category.CategoryId)*@
+        }
+    </select>
+    <br />
+    @*<input type="file" class="form-control-file" name="file" id="file" />*@
+    @*@Html.EditorFor(model => model.RequestImage, new { htmlAttributes = new { @class = "form-control", @type = "file" } })*@
+    <button type="submit">Adauga cerere</button>
+</form>

@@ -1,0 +1,19 @@
+﻿@model Proiect_Tudose_Baias.Models.Order
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+<h1>Afisare comanda</h1>
+<h2>@Model.OrderId</h2>
+<h4>@Model.Product.ProductTitle</h4>
+<form method="post" action="/Orders/Delete/@Model.OrderId">
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button type="submit">Sterge comanda</button>
+</form>
+<hr />
+<a href="/Orders/Index">Inapoi la comenzi</a>
+<br />
+<a href="/Orders/New">Adauga comanda</a>
+<br />

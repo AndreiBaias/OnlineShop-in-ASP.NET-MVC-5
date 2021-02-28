@@ -1,0 +1,20 @@
+﻿@model Proiect_Tudose_Baias.Models.Category
+@{
+    ViewBag.Title = "Show";
+}
+
+<hr />
+<a href="/Categories/Index" class="btn btn-default"> <p class="glyphicon glyphicon-arrow-left"></p> Inapoi la categorii</a>
+
+<h2>@Model.CategoryName</h2>
+<a href="/Categories/Edit/@Model.CategoryId" class="btn btn-warning">Modifica aceasta categorie</a>
+<form method="post" action="/Categories/Delete/@Model.CategoryId">
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button type="submit" class="btn btn-danger">Sterge categorie</button>
+</form>
+
+<hr />
+
+<br />
+@*<a href="/Categories/New">Adauga categorie</a>*@
+<br />

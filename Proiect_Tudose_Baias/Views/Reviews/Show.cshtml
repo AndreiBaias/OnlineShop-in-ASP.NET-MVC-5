@@ -1,0 +1,21 @@
+﻿@model Proiect_Tudose_Baias.Models.Review
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+<h1>Afisare review</h1>
+<h2>@Model.ReviewId</h2>
+<h3>@Model.ReviewRating</h3>
+<h3>@Model.ReviewText</h3>
+<a href="/Reviews/Edit/@Model.ReviewId">Modifica aceast review</a>
+<form method="post" action="/Reviews/Delete/@Model.ReviewId">
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button type="submit">Sterge review</button>
+</form>
+<hr />
+<a href="/Reviews/Index">Inapoi la review-uri</a>
+<br />
+<a href="/Reviews/New">Adauga review</a>
+<br />

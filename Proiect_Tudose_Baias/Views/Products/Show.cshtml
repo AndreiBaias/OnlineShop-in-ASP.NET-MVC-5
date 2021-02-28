@@ -1,0 +1,143 @@
+﻿@model Proiect_Tudose_Baias.Models.Product
+@using Proiect_Tudose_Baias.Models
+@{
+    ViewBag.Title = "Show";
+}
+
+
+@{
+    ICollection<Review> re = ViewBag.Reviews;
+    double avg = -1.0;
+    if (re.Count > 0)
+    {
+        avg = re.Average(x => x.ReviewRating);
+    }
+}
+
+<hr />
+<button class="btn btn-primary hBack"
+        onclick="window.location.href='/Products/Index'">
+    <p class="glyphicon glyphicon-arrow-left"></p> Inapoi la produse
+</button>
+<hr />  
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h2>@Model.ProductTitle</h2>
+        </div>
+        <div class="col-sm-2">
+            <h2 style="color:darkred">@Model.ProductPrice lei</h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        Descriere
+    </div>
+    <div class="row">
+        <div class="alert alert-info" role="alert">
+            @Model.ProductDescription
+        </div>
+    </div>
+    <div class="row">
+        Rating
+    </div>
+    <div class="row">
+        <div class="alert alert-info">
+            @if (avg == -1.0)
+            {
+                <p>Nu exista rating-uri. Fii primul care evalueaza acest produs</p>
+            }
+            else
+            {
+                int k = 0;
+                for (k = 0; k < Math.Round(avg, 0, MidpointRounding.AwayFromZero); k++)
+                {
+                    <p class="glyphicon glyphicon-star" style="color: yellow;
+                                                                -webkit-text-stroke-width: 0.4px;
+                                                                -webkit-text-stroke-color: black" />
+                }
+                for (int j = k; j < 5; j++)
+                {
+                    <p class="glyphicon glyphicon-star-empty" style="color: darkgoldenrod" ; />
+                }
+
+            }
+        </div>
+    </div>
+</div>
+
+<button class="btn-warning"
+        onclick="window.location.href='/Products/Edit/@Model.RequestId'">
+    Modifica acest produs
+</button>
+<form method="post" action="/Products/Delete/@Model.RequestId">
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button type="submit" class="btn-danger">Sterge produs</button>
+</form>
+<hr />
+
+@*<a href="/Account/SwitchRole/@Model.Id">Schimba rolul</a>
+    <a href="/Account/SwitchRole/@Model.Id">Schimba rolul</a>*@
+<br />
+@*<a href="/Products/New">Adauga produs</a>*@
+<br />
+
+
+<hr />
+<h4> Review-urile utilizatorilor: </h4>
+<a href="/Reviews/New/@Model.RequestId">
+    <button type="button" class="btn btn-primary">
+        Adauga un review la produs
+    </button>
+</a>
+
+<br />
+<br />
+<br />
+@{
+    int i = 0;
+    foreach (var rev in ViewBag.Reviews)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @rev.ApplicationUser.Email
+            </div>
+            <div class="panel-body">
+                @{
+
+                    for (i = 0; i < rev.ReviewRating; i++)
+                    {
+                        <p class="glyphicon glyphicon-star" style="color: yellow;
+                                                                -webkit-text-stroke-width: 0.4px;
+                                                                -webkit-text-stroke-color: black" />
+                    }
+
+                    for (int j = i; j < 5; j++)
+                    {
+                        <p class="glyphicon glyphicon-star-empty" style="color: darkgoldenrod" />
+                    }
+                }
+
+
+                <p>@rev.ReviewText</p>
+
+
+                @{
+                    if (ViewBag.iuzar == rev.ApplicationUser.Email)
+                    {
+                        <button class="btn-warning"
+                                onclick="window.location.href='/Reviews/Edit/@rev.ReviewId'">
+                            Editeaza
+                        </button>
+                        <button class="btn-danger"
+                                onclick="window.location.href='/Reviews/Delete/@rev.ReviewId'">
+                            Sterge
+                        </button>
+                    }
+                }
+
+            </div>
+        </div>
+    }
+}
+

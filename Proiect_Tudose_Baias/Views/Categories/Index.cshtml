@@ -1,0 +1,20 @@
+﻿@model Proiect_Tudose_Baias.Models.Category
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Categoriile de produse</h2>
+<h3>@ViewBag.Messagge</h3>
+<a class="btn btn-default" href="/Categories/New">Adauga categorie</a>
+@foreach (var category in ViewBag.Categories)
+{
+    <h2>@category.CategoryName</h2>
+    <a href="/Categories/Show/@category.CategoryId">Afisare categorie</a>
+    <br />
+    <hr />
+    <br />
+}
+@*<a href="/Categories/Index/">Afisare lista categorii</a>*@
+<br />
+
+<br />

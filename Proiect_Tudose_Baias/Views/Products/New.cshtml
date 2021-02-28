@@ -1,0 +1,30 @@
+﻿@model Proiect_Tudose_Baias.Models.Product
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+
+
+<form method="post" action="/Products/New">
+    @Html.LabelFor(x => x.ProductTitle, "Nume produs")
+    @Html.TextBoxFor(x => x.ProductTitle, null, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ProductTitle, null, new { @class = "text-danger" })
+    <p></p>
+    @Html.LabelFor(x => x.CategoryId, "Nume categorie")
+    <select name="CategoryId">
+        @foreach (var category in ViewBag.Categories)
+        {
+            <option value="@category.CategoryId">
+                @category.CategoryName
+            </option>
+            @*@Html.DropDownListFor(m => m.Category, @category.CategoryId)*@
+        }
+    </select>
+    <br />
+    @Html.LabelFor(x => x.ProductPrice, "Pret produs")
+    @Html.TextBoxFor(x => x.ProductPrice, null, new { @class = "form-control" })
+    @Html.LabelFor(x => x.ProductDescription, "Descriere produs")
+    @Html.TextBoxFor(x => x.ProductDescription, null, new { @class = "form-control" })
+    <button type="submit">Adauga produs</button>
+</form>

@@ -1,0 +1,20 @@
+﻿@model Proiect_Tudose_Baias.Models.Review
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<h3>@ViewBag.Messagge</h3>
+
+@foreach (var review in ViewBag.Reviews)
+{
+    <h2>@review.ReviewId</h2>
+    <a href="/Reviews/Show/@review.ReviewId">Afisare Review</a>
+    <br />
+    <hr />
+    <br />
+}
+<a href="/Reviews/Index/">Afisare lista Review-uri</a>
+<br />
+<a href="/Reviews/New">Adauga review</a>
+<br />

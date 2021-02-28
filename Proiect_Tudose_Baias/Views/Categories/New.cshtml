@@ -1,0 +1,17 @@
+﻿@model Proiect_Tudose_Baias.Models.Category
+
+
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+
+<form method="post" action="/Categories/New">
+    @Html.LabelFor(x => x.CategoryName, "Nume categorie")
+    @Html.TextBoxFor(x => x.CategoryName, null, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryName, null, new { @class = "text-danger" })
+    <br />
+
+    <button type="submit">Adauga categorie</button>
+</form>
